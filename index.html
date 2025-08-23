@@ -1,0 +1,141 @@
+<!-- Om Shri Ganeshaya Namah -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather Website</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <main class="main-container">
+    <!-- Search Input -->
+    <header class="input-container">
+      <input class="city-input" type="text" placeholder="Search city" />
+      <button class="search-btn">
+        <span class="material-symbols-outlined">search</span>
+      </button>
+    </header>
+
+<!-- https://www.linkedin.com/in/aditya-sharma-ba2477206/ -->
+
+    <!-- Weather Info Section -->
+    <section class="weather-info" style="display: none;">
+      <div class="location-date-container">
+        <div class="location">
+          <span class="material-symbols-outlined">location_on</span>
+          <h4 class="country-txt">City</h4>
+        </div>
+        <h5 class="current-date-txt regular-txt">Fri, 22 Aug</h5>
+      </div>
+
+      <div class="weather-summary-container">
+        <img class="weather-summary-img" src="Mainimg/weather/clouds.svg" />
+        <div class="weather-summary-info">
+          <h1 class="temp-txt">28 °C</h1>
+          <h3 class="condition-txt regular-txt">Clouds</h3>
+        </div>
+      </div>
+
+      <div class="weather-conditions-container">
+        <div class="condition-item">
+          <span class="material-symbols-outlined">water_drop</span>
+          <div>
+            <h5 class="regular-txt">Humidity</h5>
+            <h5 class="humidity-value-txt">69%</h5>
+          </div>
+        </div>
+
+        <div class="condition-item">
+          <span class="material-symbols-outlined">air</span>
+          <div>
+            <h5 class="regular-txt">Wind Speed</h5>
+            <h5 class="wind-speed-value-txt">4 M/s</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forecast Items -->
+      <div class="forecast-items-container"></div>
+    </section>
+
+    <!-- Search City Message -->
+    <section class="search-city section-message">
+      <img src="Mainimg/message/search-city.png" />
+      <div>
+        <h1>Search City</h1>
+        <h4 class="regular-txt">Find Out the Weather Conditions of the City</h4>
+      </div>
+    </section>
+
+    <!-- Not Found Section -->
+    <section class="not-Found section-message" style="display: none;">
+      <img src="Mainimg/message/404 error.png" />
+      <div>
+        <h1>City Not Found</h1>
+        <h4 class="regular-txt">Please enter a valid city name.</h4>
+         <h5 class="regular-txt">Budhu</h5>
+        
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+    
+
+
+
+  </main>
+
+
+
+  <footer>
+  <div class="social-icons">
+    <a href="mailto:adityasharma10@amityonline.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.instagram.com/iaadi0/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/aditya-sharma-ba2477206/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/iadi01" target="_blank"><i class="fab fa-github"></i></a>
+    
+  </div>
+</footer>
+<style>
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(10px); /* Glass effect */
+    background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent */
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  .social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #00acee; /* Or any color you prefer on hover */
+  }
+</style>
+
+</body>
+</html>
