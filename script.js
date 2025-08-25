@@ -1,7 +1,6 @@
 // Starting Date 17-aug-2025
 // Ending Date 24-aug-2025
 
-
 // DOM Elements
 const cityInput = document.querySelector('.city-input');
 const searchBtn = document.querySelector('.search-btn');
@@ -94,8 +93,6 @@ async function updateWeatherInfo(city) {
   await updateForecastsInfo(city);
   showDisplaySection(weatherInfoSection);
 }
-// https://www.linkedin.com/in/aditya-sharma-ba2477206/
-
 
 // Update 7-Day Forecast Info
 async function updateForecastsInfo(city) {
@@ -153,4 +150,64 @@ function showDisplaySection(activeSection) {
   activeSection.style.display = 'flex';
 }
 
-            // Byeeeeee
+
+// 🎤 Voice Search: Press "V" to speak city name
+window.addEventListener('keydown', (e) => {
+  if (e.key.toLowerCase() === '') {
+    startVoiceSearch();
+  }
+});
+
+function startVoiceSearch() {
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("Speech recognition not supported in this browser.");
+    return;
+  }
+
+  const recognition = new webkitSpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  recognition.start();
+
+  recognition.onresult = (event) => {
+    const spokenCity = event.results[0][0].transcript;
+    updateWeatherInfo(spokenCity);
+    lastSearchedCity = spokenCity;
+  };
+
+  recognition.onerror = (event) => {
+    console.warn("❌ Voice recognition error:", event.error);
+  };
+}
+
+// 📍 Auto-detect Location
+window.addEventListener('load', () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const { latitude, longitude } = position.coords;
+      const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}`;
+
+      const res = await fetch(apiUrl);
+      const data = await res.json();
+
+      if (data && data.location) {
+        updateWeatherInfo(data.location.name);
+        lastSearchedCity = data.location.name;
+      }
+    }, () => {
+      console.warn("Location access denied.");
+    });
+  }
+});
+
+// 🔄 Auto-refresh every 2 minutes
+let lastSearchedCity = '';
+
+setInterval(() => {
+  if (lastSearchedCity) {
+    console.log(`🔄 Auto-refreshing for ${lastSearchedCity}`);
+    updateWeatherInfo(lastSearchedCity);
+  }
+}, 120000); // 2 minutes

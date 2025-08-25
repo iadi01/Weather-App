@@ -5,6 +5,187 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
+body {
+  background: url('Mainimg/bg.jpg') no-repeat center center/cover;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100dvh;
+  background: rgba(0, 0, 0, 0.162);
+  backdrop-filter: blur(15px);
+  z-index: 0;
+}
+
+.main-container {
+  width: 300px;
+  height: 496px;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.621), rgba(255, 255, 255, 0.108));
+  border-radius: 12px;
+  backdrop-filter: blur(100px);
+  padding: 20px;
+}
+
+/* Input Section */
+.input-container {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.city-input {
+  width: 100%;
+  padding: 10px 16px;
+  padding-right: 45px;
+  border-radius: 99px;
+  background: rgba(0, 0, 0, 0.258);
+  border: 3px solid transparent;
+  outline: none;
+  font-weight: 500;
+  transition: 0.25s border;
+}
+
+.city-input:focus {
+  border: 3px solid rgba(0, 0, 0, 0.245);
+}
+
+.search-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+/* Weather Info */
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.location-date-container,
+.weather-summary-container,
+.weather-conditions-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.weather-summary-img {
+  width: 120px;
+  height: 120px;
+}
+
+.weather-summary-info {
+  text-align: end;
+}
+
+.condition-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.condition-item span {
+  font-size: 30px;
+}
+
+
+/* https://www.linkedin.com/in/aditya-sharma-ba2477206/ */
+/* Forecast Scrollable */
+.forecast-items-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.forecast-items-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.forecast-items-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.forecast-items-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.29);
+  border-radius: 99px;
+}
+
+/* Forecast Items */
+.forecast-item {
+  min-width: 80px;
+  background: rgba(255, 255, 255, 0.208);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  align-items: center;
+  border-radius: 12px;
+  transition: 0.3s background;
+  flex-shrink: 0;
+}
+
+.forecast-item:hover {
+  background: rgba(255, 255, 255, 0.329);
+}
+
+.forecast-item-img {
+  width: 35px;
+  height: 35px;
+}
+
+/* Message Section */
+.section-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  margin-top: 25%;
+}
+
+.section-message img {
+  height: 160px;
+  width: fit-content;
+}
+
+.regular-txt {
+  font-weight: 400;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
   color: white;
   font-weight: 600;
 }
@@ -24,7 +205,7 @@ body::before {
   position: absolute;
   width: 100%;
   height: 100dvh;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.477);
   backdrop-filter: blur(15px);
   z-index: 0;
 }
@@ -33,7 +214,7 @@ body::before {
   width: 300px;
   height: 496px;
   z-index: 1;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.15));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.426), rgba(255, 255, 255, 0.288));
   border-radius: 12px;
   backdrop-filter: blur(100px);
   padding: 20px;
@@ -141,7 +322,7 @@ body::before {
 /* Forecast Items */
 .forecast-item {
   min-width: 80px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.265);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -179,6 +360,3 @@ body::before {
 .regular-txt {
   font-weight: 400;
 }
-
-
-
