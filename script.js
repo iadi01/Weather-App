@@ -153,7 +153,7 @@ function showDisplaySection(activeSection) {
 
 // 🎤 Voice Search: Press "V" to speak city name
 window.addEventListener('keydown', (e) => {
-  if (e.key.toLowerCase() === '') {
+  if (e.key.toLowerCase() === 'v') {
     startVoiceSearch();
   }
 });
@@ -181,26 +181,32 @@ function startVoiceSearch() {
     console.warn("❌ Voice recognition error:", event.error);
   };
 }
-
-// 📍 Auto-detect Location
+// 📍 Auto-detect Location using OpenWeatherMap
 window.addEventListener('load', () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude, longitude } = position.coords;
-      const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}`;
 
-      const res = await fetch(apiUrl);
-      const data = await res.json();
+      const apiKey = 'cdbe96f859967ec3a88dca6820311a8f'; // 🔑 Replace with your actual API key
+      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
-      if (data && data.location) {
-        updateWeatherInfo(data.location.name);
-        lastSearchedCity = data.location.name;
+      try {
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+
+        if (data && data.name) {
+          updateWeatherInfo(data.name); // 🏙️ data.name contains the city name
+          lastSearchedCity = data.name;
+        }
+      } catch (error) {
+        console.error("Failed to fetch weather data:", error);
       }
     }, () => {
       console.warn("Location access denied.");
     });
   }
 });
+
 
 // 🔄 Auto-refresh every 2 minutes
 let lastSearchedCity = '';
