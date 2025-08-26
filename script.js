@@ -1,6 +1,6 @@
 // Starting Date 17-aug-2025
 // Ending Date 24-aug-2025
-
+<meta name="google-adsense-account" content="ca-pub-9657690036702429">
 // DOM Elements
 const cityInput = document.querySelector('.city-input');
 const searchBtn = document.querySelector('.search-btn');
